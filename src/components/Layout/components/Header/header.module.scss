@@ -19,9 +19,22 @@
     justify-content: space-between;
 }
 
+.search,
+.search-result {
+    width: 360px;
+}
+
+.search-title {
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 1.6rem;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
+
 .search {
     position: relative;
-    width: 360px;
     height: var(--search-height);
     background-color: #f1f1f2;
     border-radius: var(--search-boder-radius);
