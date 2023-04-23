@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmarkCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
+import { useDebounce } from '~/hooks';
 import { useState, useEffect, useRef } from 'react';
 import style from './search.module.scss';
 import { SearchIcon } from '~/components/Icons';
@@ -15,6 +16,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setloading] = useState(false);
+    const debounced = useDebounce(searchValue, 500);
 
     const handleClear = () => {
         setSearchValue('');
@@ -28,14 +30,14 @@ function Search() {
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
 
         setloading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res.data);
@@ -44,7 +46,7 @@ function Search() {
             .catch(() => {
                 setloading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
     return (
         <HeadlessTippy
             interactive
