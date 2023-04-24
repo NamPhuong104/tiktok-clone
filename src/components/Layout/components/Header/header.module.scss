@@ -20,6 +20,10 @@
     justify-content: space-between;
 }
 
+.logo-link {
+    display: flex;
+}
+
 //  Action
 .actions {
     display: flex;
@@ -41,7 +45,7 @@
     font-size: 1.4rem;
     height: 2rem;
     line-height: 2rem;
-    font-family: 'ProximaNova';
+    font-family: var(--font-family);
     top: -3px;
     right: 0;
     border-radius: 10px;
