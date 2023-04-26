@@ -5,7 +5,7 @@ import { faXmarkCircle, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useDebounce } from '~/hooks';
 import style from './search.module.scss';
 import { SearchIcon } from '~/components/Icons';
-import * as searchService from '~/apiServices/searchService';
+import * as searchService from '~/services/searchService';
 
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
